@@ -8,19 +8,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/Estilo.css"
+      rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-         <form method="POST" action="Inicio">
+    <center>
+         <form class="caja" method="POST" action="Inicio">
              <h1>Autentificación</h1>
             <p>Usuario: <input type="text" name="txtUser" ></p>
             <p>Password: <input type="password" name="txtPass" ></p>
             <p><input type="checkbox" name="txtrecordar" value="Recordar"> Recordar</p>
-            <p><input type="submit" name="btnButton"  value="Ingresar"></p>               
-        </form>  
-
-        <%
+            <p><input type="submit" name="btnButton"  value="Ingresar"></p>  
+            
+            <%
             HttpSession ses = request.getSession();
             String user = request.getParameter("txtUser");
             String pass = request.getParameter("txtPass");
@@ -52,5 +54,9 @@
 
 
         %>
+        </form>  
+        
+        
+        </center>
     </body>
 </html>
