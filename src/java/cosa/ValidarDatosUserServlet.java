@@ -59,20 +59,20 @@ public class ValidarDatosUserServlet extends HttpServlet {
             } else {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jueves10", "root", "");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/requerimientos", "root", "");
                     PreparedStatement ps = null;
                     ResultSet rs = null;
-                    ps = conn.prepareStatement("SELECT * FROM user WHERE user.username='" + user + "'");
+                    ps = conn.prepareStatement("SELECT * FROM user WHERE user.user='" + user + "'");
                     rs = ps.executeQuery();
                     rs.next();
                     //Statement st = conn.createStatement();
                     //String query="INSERT INTO USER VALUES(2,'admin2','nombre2','apellido2')";
-                    if (rs.getString("username").equals(user)) {
+                    if (rs.getString("user").equals(user)) {
                         if (rs.getString("pass").equals(pass)) {
-                            Usuario us = new Usuario(user, pass,rs.getString("name"),rs.getString("lastname"));
+                            Usuario us = new Usuario(user, pass,rs.getString("user"),rs.getString("pass"));
                             ses.setAttribute("usuario", us);
                             conn.close();
-                            request.getRequestDispatcher("listausuarios.jsp").forward(request, response);
+                            request.getRequestDispatcher("MenuPrincipal.jsp").forward(request, response);
 
                         } else {
                             
